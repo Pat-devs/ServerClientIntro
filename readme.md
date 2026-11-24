@@ -87,4 +87,58 @@ TCP - Deler opp data i mindre pakker.
 IP - Gir enhetene addresser og "finner beste ruten".
 ```
 
+## HTTP-forespørsel (HTTP-request)
+
+ 
+Forenklet eksempel på en http 1.1 request:
+
+```
+GET /posts/1 HTTP/1.1
+Host: jsonplaceholder.typicode.com
+Accept: application/json
+```
+
+
+## HTTP-respons
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "userId: 1,
+    "id": 1,
+    "title": "Whatevertitle",
+    "body": "Noetekst"
+}
+```
+
+### HTTP request status codes
+
+```
+|Kode | betydning |
+|---- |--------------|
+| 1xx | Basic info   |
+| 2xx | Vellyket request |
+| 3xx | Omdirigerting |
+| 4xx | Feil knyttet til klienten |
+| 5xx | Feil knyttet til serveren | 
+```
+
+litt mer eksempler på spesifike status koder:
+```
+|  Kode  | betydning    |
+|  ----  |--------------|
+| 200 OK |--------------|
+| 201 Created | En ressurs ble opprettet  |
+| 204 No Content | Vellyket, men det er ingen innhold her |
+| 204 No Content | Vellyket, men det er ingen innhold her |
+| 400 Bad Request | Ugyldig forespørsel |
+| 401 Unauthorized | Mangler gyldig autentisering |
+| 404 Not found | Ressurs ikke funnet |
+| 500 Internal server error | Intern serverfeil |
+| 503 Service unavailable | Tjenesten utilgjengelig |
+osv...
+```
+
 
