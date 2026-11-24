@@ -18,7 +18,7 @@ Ulemper: Antall colums må være defiert på forhånd.
 
 XML (Markup language): in short: easier to modify, but its HUGE.
 
-JSON: skal tilbake til denne straks :)
+JSON: Se API, URL, JSON, osv... seksjonen
 
 
 ## Nettverks protokoller
@@ -139,6 +139,59 @@ litt mer eksempler på spesifike status koder:
 | 500 Internal server error | Intern serverfeil |
 | 503 Service unavailable | Tjenesten utilgjengelig |
 osv...
+```
+
+### API, URL, JSON, osv...
+
+API - Application Programming Interface
+URL - En adresse :)
+JSON - Javascript Object Notation
+
+
+JSON eksempel:
+```
+{
+    "id": 1,
+    "name": "Ola",
+    "age": 25,
+    "money": 50.25,
+    "isActive": true,
+    "email": null,
+    "skills": ["C#", "SQL", "HTML"],
+    "address": {
+        "city": "Bergen",
+        "country": "Norge"
+    }
+}
+```
+
+#### API
+
+Eksempel på requests
+```
+GET /posts Hent alle innlegg
+GET /posts/1 Hent innlegg nr 1 (eller erstatt 1 med et spesifikt innlegg)
+POST /posts Opprett et innlegg
+PUT /posts/1 Erstatt et innlegg (replace)
+PATCH /posts/1 Erstatt deler innlegg (edit parts)
+DELETE /posts/1 Fjern et innlegg
+```
+
+
+### URL
+
+f.eks:
+```
+https://jsonplaceholder.typicode.com:443/posts?userId=1
+```
+
+```
+DEL - Betydning
+`https://` - Secure HTTP
+`jsonplaceholder.typicode.com` - Addresse / vertsnavn (hostname) 
+`:443` - Port
+`/posts` - Path / Sti
+`?userId=1` - Query string parameter(e)
 ```
 
 
