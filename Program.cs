@@ -4,7 +4,9 @@ using HttpClient client = new();
 
 client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
 
-using HttpResponseMessage response = await client.GetAsync("posts/2");
+// https://jsonplaceholder.typicode.com/posts?userId=1
+
+using HttpResponseMessage response = await client.GetAsync("posts?userId=1");
 
 Console.WriteLine($"Status: {(int)response.StatusCode} {response.StatusCode}");
 Console.WriteLine($"Type: {response.Content.Headers.ContentType}");
@@ -13,26 +15,20 @@ string json = await response.Content.ReadAsStringAsync();
 
 Console.WriteLine(json);
 
-// DTO - Data Transfer Objects
-
-// Input (JSON)
-/* A post
-{
-  "userId": 1,
-  "id": 2,
-  "title": "qui est esse",
-  "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-}
-*/
-
 Console.WriteLine("------");
 
-Post post = await response.Content.ReadFromJsonAsync<Post>();
+// Post post = await response.Content.ReadFromJsonAsync<Post>();
 
-Console.WriteLine($"Post ID: {post.Id}");
-Console.WriteLine($"Post UserId: {post.UserId}");
-Console.WriteLine($"Post Title: {post.Title}");
-Console.WriteLine($"Post Body: {post.Body}");
+List<Post> posts = await response.Content.ReadFromJsonAsync<List<Post>>();
+
+Console.WriteLine($"Post count: {posts.Count}");
+
+foreach (Post post in posts)
+{
+    Console.WriteLine($"Post ID & Title: {post.Id} - {post.Title}");
+}
+
+
 
 public class Post
 {
